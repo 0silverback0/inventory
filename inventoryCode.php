@@ -1,47 +1,5 @@
 <?php
-include('../connection.php');
-/****************
-select all function
-*****************/
-function selectAll(){
-		include('../connection.php');
-		try{
-		$results = $db->query("SELECT * FROM inventory");
-	} catch (Exception $e){
-		echo " no shit here";
-		exit;
-	}
 
-	$entire_db = $results->fetchAll(PDO::FETCH_ASSOC);
-	return $entire_db;
-
-}
-
-
-
-/*************************
-single item query function
-**************************/
-
-function selectSome($id){
-		include('../connection.php');
-		try{
-		$results = $db->query("SELECT  sku, location, amount, date_added FROM inventory WHERE id = $id");
-	} catch (Exception $e){
-		echo " no shit here";
-		exit;
-	}
-
-	$catalog = $results->fetch(PDO::FETCH_ASSOC);
-	return $catalog;
-
-}
-
-
-
-/******************
- add data function
- ******************/
 
  function addData($sku, $location, $amount){
  	include('../connection.php');
@@ -61,44 +19,4 @@ function selectSome($id){
 
  	return true;
  }
-
-/*************************
-sku array function
-**************************/
-
-function skuArray(){
-		include('../connection.php');
-
-		try{
-		$results = $db->query("SELECT sku FROM inventory");
-	} catch (Exception $e){
-		echo " no shit here";
-		exit;
-	}
-
-	$skus = $results->fetchAll(PDO::FETCH_COLUMN);
-	return $skus;
-
-}
-
-
-
-// function updateAmount(){
-// 	include('../connection.php');
-
-// 	try{
-// 		$results = $db->query("UPDATE inventory SET amount='$quantity' WHERE sku = '$skuSelect'");
-	
-// 	}catch (Exception $e){
-// 		echo "nada";
-// 		exit;
-// 	}
-
-// 	return $results;
-// 	echo $results;
-// }
-
-
-
-
 
