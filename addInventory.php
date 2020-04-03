@@ -1,67 +1,6 @@
 <?php 
  include('../connection.php');
  include('inventoryCode.php');
-/*
-	$query = "SELECT * FROM inventory";
-	$result = $db->query($query);
-
-	if(isset($_POST["submit"])){
- 	function validateFormData($formData){
- 		$formData = trim(stripslashes(htmlspecialchars($formData)));
- 		return $formData;
- }
-	//check to see if inputs are empty
-	// create varibles with form data
-	// wrap data with our function
-
-	// set all variables to empty by default
-	$sku = $location = $amount = "";
-	
-
-	$sql = $db->query("SELECT sku FROM inventory");
-	//make container for array from database
-	$arr = [];
-	//fetch array from database and store in container
-	while($row = mysqli_fetch_array($sql)){
-		$arr[] = $row['sku'];
-
-		
-	}
-
-	// check to see if location is unique
-
-	$sql2 = mysqli_query($conn,"SELECT location FROM inventory");
-$arr2 =[];
-while($row2 = mysqli_fetch_array($sql2)){
-	$arr2[] = $row2['location'];
-}
-	// prints all contents in array
-	//print_r($arr);
-
-	//checks to see if number is in array
-	if(in_array($sku, $arr)){
-		echo "<div class='alert alert-danger'>This SKU is already in Database</div>";
-	}
-
-	if(in_array($location,$arr2)){
-		echo "<div class='alert alert-danger'> This Location is already taken</div>";
-	}
-
-
-
-
-
-	// check to see if each variable has data
-	if(@$sku && @$location && @$amount ){
-
-	$query = "INSERT INTO inventory (id, sku, location, amount, date_added) VALUES (NULL, '$sku', '$location', '$amount', CURRENT_TIMESTAMP)";
-
-	if(mysqli_query($conn,$query)){
-		echo "<div class='alert alert-success'>New SKU in Inventory</div>";
-	} 
-}
-}
-*/
 
 $sql = $db->prepare("SELECT sku, location FROM inventory");
 $sql->execute();
